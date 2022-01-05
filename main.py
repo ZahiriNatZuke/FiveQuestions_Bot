@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, ConversationHandler, CallbackQueryHandler, CallbackContext
 
 from utils import markup_start, reply_markup_callback, markup_qs1, init_quiz, markup_qs2, markup_qs3, markup_qs4, \
-    markup_qs5
+    markup_qs5, markup_last_menu
 
 
 def start(update: Update, context: CallbackContext) -> None:
@@ -15,63 +15,74 @@ def start(update: Update, context: CallbackContext) -> None:
     )
 
 
-def qs1_callback_handler(update: Update, context: CallbackContext) -> None:
+def qs1(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    query.answer('Question 1.')
-    query.edit_message_text(text='You have selected question #1.')
-    reply_markup_callback(update=update, text="What is Python?", reply_markup=markup_qs1())
+    query.answer('Questions 1.')
+    query.edit_message_text(text='You have selected questions #1.')
+    reply_markup_callback(update=update, text="Questions 1.", reply_markup=markup_qs1())
     return ConversationHandler.END
 
 
-def qs2_callback_handler(update: Update, context: CallbackContext) -> None:
+def qs2(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    query.answer('Question 2.')
-    query.edit_message_text(text='You have selected question #2.')
+    query.answer('Questions 2.')
+    query.edit_message_text(text='You have selected questions #2.')
     reply_markup_callback(
         update=update,
-        text="In what year did man reach the moon?",
+        text="Questions 2.",
         reply_markup=markup_qs2()
     )
     return ConversationHandler.END
 
 
-def qs3_callback_handler(update: Update, context: CallbackContext) -> None:
+def qs3(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    query.answer('Question 3.')
-    query.edit_message_text(text='You have selected question #3.')
+    query.answer('Questions 3.')
+    query.edit_message_text(text='You have selected questions #3.')
     reply_markup_callback(
         update=update,
-        text="What is the highest mountain in Europe?",
+        text="Questions 3.",
         reply_markup=markup_qs3()
     )
     return ConversationHandler.END
 
 
-def qs4_callback_handler(update: Update, context: CallbackContext) -> None:
+def qs4(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    query.answer('Question 4.')
-    query.edit_message_text(text='You have selected question #4.')
+    query.answer('Questions 4.')
+    query.edit_message_text(text='You have selected questions #4.')
     reply_markup_callback(
         update=update,
-        text="In which country is Aconcagua peak located?",
+        text="Questions 4.",
         reply_markup=markup_qs4()
     )
     return ConversationHandler.END
 
 
-def qs5_callback_handler(update: Update, context: CallbackContext) -> None:
+def qs5(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    query.answer('Question 5.')
-    query.edit_message_text(text='You have selected question #5.')
+    query.answer('Questions 5.')
+    query.edit_message_text(text='You have selected questions #5.')
     reply_markup_callback(
         update=update,
-        text="What is the name of Don Quixote de la Mancha's horse?",
+        text="Questions 5.",
         reply_markup=markup_qs5()
     )
     return ConversationHandler.END
 
 
-def correct_answer_callback_handler(update: Update, context: CallbackContext) -> None:
+def last_menu(update: Update, context: CallbackContext) -> None:
+    query = update.callback_query
+    query.answer('Last Menu')
+    reply_markup_callback(
+        update=update,
+        text="Another menu",
+        reply_markup=markup_last_menu()
+    )
+    return ConversationHandler.END
+
+
+def correct_answer(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer('Correct Answer')
     query.edit_message_text(text='You have answered correctly 👌')
@@ -79,7 +90,7 @@ def correct_answer_callback_handler(update: Update, context: CallbackContext) ->
     return ConversationHandler.END
 
 
-def wrong_answer_callback_handler(update: Update, context: CallbackContext) -> None:
+def wrong_answer(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     query.answer('Wrong Answer')
     query.edit_message_text(text='Your answer is not correct 😥')
@@ -93,13 +104,14 @@ if __name__ == '__main__':
 
     dp.add_handler(ConversationHandler(
         entry_points=[
-            CallbackQueryHandler(pattern='qs1', callback=qs1_callback_handler),
-            CallbackQueryHandler(pattern='qs2', callback=qs2_callback_handler),
-            CallbackQueryHandler(pattern='qs3', callback=qs3_callback_handler),
-            CallbackQueryHandler(pattern='qs4', callback=qs4_callback_handler),
-            CallbackQueryHandler(pattern='qs5', callback=qs5_callback_handler),
-            CallbackQueryHandler(pattern='correct_answer', callback=correct_answer_callback_handler),
-            CallbackQueryHandler(pattern='wrong_answer', callback=wrong_answer_callback_handler),
+            CallbackQueryHandler(pattern='qs1', callback=qs1),
+            CallbackQueryHandler(pattern='qs2', callback=qs2),
+            CallbackQueryHandler(pattern='qs3', callback=qs3),
+            CallbackQueryHandler(pattern='qs4', callback=qs4),
+            CallbackQueryHandler(pattern='qs5', callback=qs5),
+            CallbackQueryHandler(pattern='last_menu', callback=last_menu),
+            CallbackQueryHandler(pattern='correct_answer', callback=correct_answer),
+            CallbackQueryHandler(pattern='wrong_answer', callback=wrong_answer),
         ],
         states={},
         fallbacks=[]

@@ -3,11 +3,11 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton, Update
 
 def markup_start() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton(text='Question 1', callback_data='qs1')],
-        [InlineKeyboardButton(text='Question 2', callback_data='qs2')],
-        [InlineKeyboardButton(text='Question 3', callback_data='qs3')],
-        [InlineKeyboardButton(text='Question 4', callback_data='qs4')],
-        [InlineKeyboardButton(text='Question 5', callback_data='qs5')]
+        [InlineKeyboardButton(text='Questions 1', callback_data='qs1')],
+        [InlineKeyboardButton(text='Questions 2', callback_data='qs2')],
+        [InlineKeyboardButton(text='Questions 3', callback_data='qs3')],
+        [InlineKeyboardButton(text='Questions 4', callback_data='qs4')],
+        [InlineKeyboardButton(text='Questions 5', callback_data='qs5')]
     ])
 
 
@@ -24,49 +24,59 @@ def init_quiz(update: Update):
 
 def markup_qs1() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton(text='A joke in bad taste', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Some kind of reptile', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='A programming language', callback_data='correct_answer')],
-        [InlineKeyboardButton(text='An american football team', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='A bus stop', callback_data='wrong_answer')]
+        [InlineKeyboardButton(text='Questions 1.1', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 1.2', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 1.3', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 1.4', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 1.5', callback_data='last_menu')]
     ])
 
 
 def markup_qs2() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton(text='1999', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='2022', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='1959', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='1969', callback_data='correct_answer')],
-        [InlineKeyboardButton(text='1917', callback_data='wrong_answer')]
+        [InlineKeyboardButton(text='Questions 2.1', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 2.2', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 2.3', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 2.4', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 2.5', callback_data='last_menu')]
     ])
 
 
 def markup_qs3() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton(text='Mount Elbrús', callback_data='correct_answer')],
-        [InlineKeyboardButton(text='Annapurna I', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Turquino Peak', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Dhaulagiri', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Mount Everest', callback_data='wrong_answer')]
+        [InlineKeyboardButton(text='Questions 3.1', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 3.2', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 3.3', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 3.4', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 3.5', callback_data='last_menu')]
     ])
 
 
 def markup_qs4() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton(text='Argentina', callback_data='correct_answer')],
-        [InlineKeyboardButton(text='Egypt', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Spain', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Ecuador', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Malaysia', callback_data='wrong_answer')]
+        [InlineKeyboardButton(text='Questions 4.1', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 4.2', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 4.3', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 4.4', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 4.5', callback_data='last_menu')]
     ])
 
 
 def markup_qs5() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton(text='Baconao', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Twister', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Marengo ', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Palmiche', callback_data='wrong_answer')],
-        [InlineKeyboardButton(text='Rocinante', callback_data='correct_answer')]
+        [InlineKeyboardButton(text='Questions 5.1', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 5.2', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 5.3', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 5.4', callback_data='last_menu')],
+        [InlineKeyboardButton(text='Questions 5.5', callback_data='last_menu')]
+    ])
+
+
+def markup_last_menu() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton(text='Answer #1', callback_data='wrong_answer')],
+        [InlineKeyboardButton(text='Answer #2', callback_data='wrong_answer')],
+        [InlineKeyboardButton(text='Answer #3', callback_data='wrong_answer')],
+        [InlineKeyboardButton(text='Answer #4', callback_data='correct_answer')],
+        [InlineKeyboardButton(text='Answer #5', callback_data='wrong_answer')]
     ])
